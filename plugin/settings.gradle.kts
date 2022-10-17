@@ -4,6 +4,8 @@ pluginManagement {
         google()
         mavenCentral()
     }
+
+
 }
 
 @Suppress("UnstableApiUsage")
@@ -24,6 +26,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "build"
+rootProject.name = "plugin"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 enableFeaturePreview("VERSION_CATALOGS")
