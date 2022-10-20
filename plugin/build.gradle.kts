@@ -4,6 +4,7 @@ plugins {
 }
 
 dependencies {
+    gradleApi()
     implementation(libs.gradle.android)
     implementation(libs.gradle.kotlin)
     implementation(libs.asm.commons)
