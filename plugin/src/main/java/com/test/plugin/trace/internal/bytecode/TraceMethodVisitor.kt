@@ -1,4 +1,4 @@
-package com.test.plugin.trace.internal.visitor
+package com.test.plugin.trace.internal.bytecode
 
 import org.objectweb.asm.Label
 import org.objectweb.asm.MethodVisitor

@@ -13,7 +13,7 @@ class MatcherTest {
 
     @Test
     fun test_matcher_hit() {
-        val patterns = listOf("com.test.*")
+        val patterns = setOf("com.test.*")
         val matcher = Matcher(patterns)
 
         val result = matcher.match("com.test.MainActivity1")
@@ -22,7 +22,7 @@ class MatcherTest {
 
     @Test
     fun test_matcher_miss() {
-        val patterns = listOf("com.test.*")
+        val patterns = setOf("com.test.*")
         val matcher = Matcher(patterns)
 
         val result = matcher.match("com.tes")

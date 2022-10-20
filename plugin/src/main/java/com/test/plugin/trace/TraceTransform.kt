@@ -3,7 +3,7 @@ package com.test.plugin.trace
 import com.android.build.api.instrumentation.AsmClassVisitorFactory
 import com.android.build.api.instrumentation.ClassContext
 import com.android.build.api.instrumentation.ClassData
-import com.test.plugin.trace.internal.visitor.TraceClassVisitor
+import com.test.plugin.trace.internal.bytecode.TraceClassVisitor
 import org.objectweb.asm.ClassVisitor
 
 abstract class TraceTransform : AsmClassVisitorFactory<TraceParams> {

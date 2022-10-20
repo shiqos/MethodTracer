@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("maven-publish")
 }
 
 android {
@@ -36,4 +37,42 @@ android {
 dependencies {
 
     testImplementation(libs.bundles.test)
+}
+
+afterEvaluate {
+    // 生成源码jar文件
+    val sourceJar = task<Jar>("sourceJar") {
+        from(android.sourceSets.getByName("main").java.srcDirs)
+        archiveClassifier.set("sources")
+    }
+
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                from(components["release"])
+
+                version = "1.0"
+                groupId = "cn.futu"
+                artifactId = "trace"
+                description = "trace"
+
+                // 带源码发布
+                artifact(sourceJar)
+
+                val gav = "$groupId:$artifactId:$version"
+                project.logger.lifecycle("May publish $gav => $description")
+            }
+
+            repositories {
+                maven {
+                    setUrl("http://172.24.17.168:8081/repository/maven-snapshots/")
+                    credentials {
+                        username = "username"
+                        password = "password"
+                    }
+                    isAllowInsecureProtocol = true
+                }
+            }
+        }
+    }
 }

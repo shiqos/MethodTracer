@@ -1,7 +1,9 @@
 package com.test.plugin.trace
 
+import org.gradle.api.provider.ListProperty
+
 abstract class TraceExtension {
 
-    val ignoreClass: List<String> = arrayListOf()
+    abstract val ignoreClass: ListProperty<String>
 
 }

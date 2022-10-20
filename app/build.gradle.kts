@@ -20,8 +20,11 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled  = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
 
@@ -44,5 +47,15 @@ dependencies {
     implementation(libs.google.material)
     implementation(libs.androidx.constraintlayout)
 
+    implementation(project(":trace"))
+
     testImplementation(libs.bundles.test)
+}
+
+trace {
+    ignoreClass.set(arrayListOf(
+        "androidx.*",
+        "kotlin.*",
+        "kotlinx.*",
+    ))
 }

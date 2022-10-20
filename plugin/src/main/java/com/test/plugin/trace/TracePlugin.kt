@@ -12,7 +12,7 @@ import org.gradle.api.logging.LogLevel
 class TracePlugin : Plugin<Project> {
 
     companion object {
-        private const val EXTENSION_NAME = "tracer"
+        private const val EXTENSION_NAME = "trace"
     }
 
     override fun apply(project: Project) {
@@ -27,7 +27,7 @@ class TracePlugin : Plugin<Project> {
                 TraceTransform::class.java,
                 InstrumentationScope.ALL
             ) {
-                val ignoreClasses = ext.ignoreClass + TraceDefaultConfig.defaultIgnoreClasses
+                val ignoreClasses = ext.ignoreClass.get() + TraceDefaultConfig.defaultIgnoreClasses
                 it.matcher.set(Matcher(ignoreClasses.toSet()))
             }
             variant.instrumentation.setAsmFramesComputationMode(
