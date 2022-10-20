@@ -3,8 +3,7 @@ package com.test.plugin.trace
 import com.android.build.api.instrumentation.FramesComputationMode
 import com.android.build.api.instrumentation.InstrumentationScope
 import com.android.build.api.variant.AndroidComponentsExtension
-import com.test.plugin.trace.internal.Matcher
-import com.test.plugin.trace.internal.TraceDefaultConfig
+import com.test.plugin.trace.internal.filter.TraceClassFilter
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.logging.LogLevel
@@ -22,14 +21,14 @@ class TracePlugin : Plugin<Project> {
 
         val androidComponents = project.extensions.getByType(AndroidComponentsExtension::class.java)
         androidComponents.onVariants { variant ->
-            val ext = project.extensions.findByName(EXTENSION_NAME) as TraceExtension
             variant.instrumentation.transformClassesWith(
-                TraceTransform::class.java,
-                InstrumentationScope.ALL
+                TraceTransform::class.java, InstrumentationScope.ALL
             ) {
-                val ignoreClasses = ext.ignoreClass.get() + TraceDefaultConfig.defaultIgnoreClasses
-                it.matcher.set(Matcher(ignoreClasses.toSet()))
+                val ext = project.extensions.findByName(EXTENSION_NAME) as TraceExtension
+                val ignoreClasses = ext.ignoreClass.get()
+                it.classFilter.set(TraceClassFilter(ignoreClasses))
             }
+
             variant.instrumentation.setAsmFramesComputationMode(
                 FramesComputationMode.COMPUTE_FRAMES_FOR_INSTRUMENTED_METHODS
             )

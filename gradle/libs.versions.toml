@@ -6,7 +6,7 @@ sdk-compile = "32"
 sdk-min = "21"
 sdk-target = "32"
 
-app-id = "com.test.tracer"
+app-id = "com.test.app"
 app-versionCode = "1"
 app-versionName = "1.0"
 

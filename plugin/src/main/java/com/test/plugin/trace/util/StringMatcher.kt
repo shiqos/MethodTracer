@@ -1,14 +1,14 @@
-package com.test.plugin.trace.internal
+package com.test.plugin.trace.util
 
 import java.io.Serializable
 import java.util.regex.Pattern
 
-class Matcher(rawPatterns: Set<String>) : Serializable {
+class StringMatcher(regexes: Set<String>) : Serializable {
     companion object {
         private const val TAG = "Matcher"
     }
 
-    private val patterns = rawPatterns.map {
+    private val patterns = regexes.map {
         Pattern.compile(it)
     }
 

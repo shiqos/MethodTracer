@@ -15,11 +15,14 @@ abstract class TraceTransform : AsmClassVisitorFactory<TraceParams> {
         classContext: ClassContext,
         nextClassVisitor: ClassVisitor
     ): ClassVisitor {
-        return TraceClassVisitor(nextClassVisitor, classContext.currentClassData.className)
+        return TraceClassVisitor(
+            classContext.currentClassData.className,
+            nextClassVisitor
+        )
     }
 
     override fun isInstrumentable(classData: ClassData): Boolean {
-        val matcher = parameters.get().matcher.get()
-        return !matcher.match(classData.className)
+        val filter = parameters.get().classFilter.get()
+        return !filter.filter(classData.className)
     }
 }

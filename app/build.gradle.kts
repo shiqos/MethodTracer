@@ -55,7 +55,12 @@ dependencies {
 trace {
     ignoreClass.set(arrayListOf(
         "androidx.*",
+        "android.support.",
+
         "kotlin.*",
         "kotlinx.*",
+        "org.intellij.*",
+
+        "com.google.android.*",
     ))
 }

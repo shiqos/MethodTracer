@@ -23,23 +23,27 @@ gradlePlugin {
     }
 }
 
+val GROUP_ID = "com.test"
+val ARTIFACT_ID = "trace-plugin"
+val VERSION = "1.0.0"
+
 afterEvaluate {
     // 生成源码jar文件
     val sourceJar = task<Jar>("sourceJar") {
         archiveClassifier.set("sources")
     }
 
-    this.group = "cn.futu"
-    this.version = "1.0"
+    this.group = GROUP_ID
+    this.version = VERSION
 
     publishing {
         publications {
             create<MavenPublication>("maven") {
                 from(components["java"])
 
-                version = "1.0"
-                groupId = "cn.futu"
-                artifactId = "trace-plugin"
+                groupId = GROUP_ID
+                artifactId = ARTIFACT_ID
+                version = VERSION
                 description = "trace"
 
                 // 带源码发布

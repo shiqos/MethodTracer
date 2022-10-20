@@ -39,6 +39,10 @@ dependencies {
     testImplementation(libs.bundles.test)
 }
 
+val GROUP_ID = "com.test"
+val ARTIFACT_ID = "trace-runtime"
+val VERSION = "1.0.0"
+
 afterEvaluate {
     // 生成源码jar文件
     val sourceJar = task<Jar>("sourceJar") {
@@ -51,9 +55,9 @@ afterEvaluate {
             create<MavenPublication>("release") {
                 from(components["release"])
 
-                version = "1.0"
-                groupId = "cn.futu"
-                artifactId = "trace"
+                groupId = GROUP_ID
+                artifactId = ARTIFACT_ID
+                version = VERSION
                 description = "trace"
 
                 // 带源码发布
