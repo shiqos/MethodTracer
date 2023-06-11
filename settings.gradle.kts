@@ -12,7 +12,7 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "Tracer"
+rootProject.name = "MethodTracer"
 include(":app")
 includeBuild("./plugin")
 
