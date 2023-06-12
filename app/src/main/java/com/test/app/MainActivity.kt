@@ -12,6 +12,9 @@ class MainActivity : AppCompatActivity() {
         findViewById<View>(R.id.test_view).setOnClickListener {
             test()
         }
+
+        val map = hashMapOf<String, String>()
+        map.hashCode()
     }
 
     private fun test() {

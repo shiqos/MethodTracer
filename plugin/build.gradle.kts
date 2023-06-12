@@ -8,6 +8,7 @@ dependencies {
     gradleApi()
     implementation(libs.gradle.android)
     implementation(libs.gradle.kotlin)
+    implementation("com.android.tools:common:30.0.2")
     implementation(libs.asm.commons)
     implementation(libs.asm.tree)
     testImplementation(libs.junit)

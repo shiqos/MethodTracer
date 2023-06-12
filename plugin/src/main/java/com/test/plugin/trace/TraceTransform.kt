@@ -17,6 +17,7 @@ abstract class TraceTransform : AsmClassVisitorFactory<TraceParams> {
     ): ClassVisitor {
         return TraceClassVisitor(
             classContext.currentClassData.className,
+            parameters.get().context.get(),
             nextClassVisitor
         )
     }

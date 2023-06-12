@@ -10,4 +10,7 @@ interface TraceParams : InstrumentationParameters {
     @get:Input
     val classFilter: Property<TraceClassFilter>
 
+    @get:Input
+    val context: Property<TraceContext>
+
 }

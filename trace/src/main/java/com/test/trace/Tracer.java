@@ -4,11 +4,11 @@ import android.os.Trace;
 
 public class Tracer {
 
-    public static void b(String tag) {
-        Trace.beginSection(tag);
+    public static void i(int id) {
+        Trace.beginSection(String.valueOf(id));
     }
 
-    public static void e(String tag) {
+    public static void o(int id) {
         Trace.endSection();
     }
 
